@@ -1,7 +1,11 @@
 body {
-	background-color: #161616;
+	background-color: black;
 	font-family: 'Helvetica', sans-serif;
 	color: #f2f2f2;
+	width: 100%;
+	font-weight: light;
+	padding: 0;
+	margin: 0;
 }
 
 /******************
@@ -15,13 +19,46 @@ h1, h3 {
 /******************
 *	#CONTENT
 *******************/
-.content {
+.content, #voyagers{
 	width: 20%;
 	vertical-align: top;
 	display: inline-block;
 	margin: 50px;
 }
+.content.left {
+}
 .content.right {
 	float: right;
 	text-align: right;
+}
+.content.bottom {
+	position: absolute;
+	bottom: 50px;
+	text-align: center;
+	width: 500px;
+	margin: 0 auto;
+	border-top: 1px solid #f2f2f2;
+	padding-top: 30px;
+}
+
+/******************
+*	#MESSAGE
+*******************/
+#message {
+	font-size: 14px;
+	width: 250px;
+	padding: 20px;
+	text-align: center;
+	margin: 50px;
+	background-color: #231F20;
+}
+.message, .send-message{
+	width: 230px;
+	padding: 5px;
+	margin: 5px;
+	font-size: 14px;
+}
+.send-message {
+	height: 20px;
+	border-radius: 0px
 }

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	/* WEATHER with simpleWeather.js */
-	  $.simpleWeather({
+	$.simpleWeather({
 		location: 'Biel/Bienne, CH',
 		unit: 'c',
 		success: function(weather) {
@@ -12,9 +12,9 @@ $(document).ready(function() {
 		error: function(error) {
 		  $("#weather").html('<p>'+error+'</p>');
 		}
-	  });
+	});
 
-	/* Date & time */
+	/* DATE & TIME */
 	function dateTime() {
 		var dt = new Date();
 		var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
@@ -22,9 +22,27 @@ $(document).ready(function() {
 
 		//convert month to 2 digits
 		var twoDigitMonth = ((dt.getMonth().length+1) === 1)? (dt.getMonth()+1) : '0' + (dt.getMonth()+1);
-		var currentDate = dt.getDate() + "/" + twoDigitMonth + "/" + dt.getFullYear();
+		var currentDate = dt.getDate() + "." + twoDigitMonth + "." + dt.getFullYear();
 		$("#date h3").html(currentDate);
 	}
-
 	setInterval(dateTime, 1000);
+
+	/* MESSAGE */
+
+	refreshMessage(); //Show the message when the page is launched
+	setInterval(refreshMessage, 5000); //Refresh the message each 5 seconds
+
+	/* Set the new message */
+	$(".send-message").on('click', function() {
+		var message = $(".message").val();
+		$(".message").val("");
+		localStorage.setItem("message", message)
+		$(".content.bottom").text(localStorage.message);
+	});
+
+	function refreshMessage() {
+		if(localStorage.message) {
+			$(".content.bottom").text(localStorage.message);
+		}
+	}
 });
